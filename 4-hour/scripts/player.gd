@@ -5,6 +5,7 @@ class_name Player
 @export var speed: float = 800.0
 @export var polygon: Polygon2D
 @export var collision_shape: CollisionShape2D
+@export var bullet_scene: PackedScene
 
 var input_type: String = "keyboard"
 var device_id: int = -1
@@ -83,6 +84,8 @@ func _physics_process(_delta: float) -> void:
     
     velocity = input_vector * speed
     move_and_slide()
+    
+    # Aiming
     if input_type == "keyboard":
         # Keyboard player looks at the mouse
         if camera:
@@ -99,3 +102,14 @@ func _physics_process(_delta: float) -> void:
         var aim_vector = Input.get_vector(aim_left_action, aim_right_action, aim_up_action, aim_down_action)
         if aim_vector.length_squared() > 0.1:
             rotation = aim_vector.angle()
+    
+    # Shooting
+    if Input.is_action_pressed("shoot"):
+        _shoot()
+
+func _shoot() -> void:
+    var bullet = bullet_scene.instantiate()
+    get_parent().add_child(bullet)
+    bullet.global_position = global_position + Vector2.RIGHT.rotated(rotation) * 100 # Spawn a bit in front of the player
+    bullet.direction = Vector2.RIGHT.rotated(rotation)
+    bullet.global_rotation = rotation

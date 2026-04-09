@@ -1,15 +1,14 @@
-[gd_scene format=3 uid="uid://ckrmo50iceg6i"]
+[gd_scene format=3 uid="uid://c37xi1cmtjx2b"]
 
-[ext_resource type="Script" uid="uid://ce5ua8iyksdhc" path="res://scripts/bullet.gd" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://ce5ua8iyksdhc" path="res://scripts/bullet.gd" id="1_4g3gs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
 radius = 16.0
 
-[node name="Bullet" type="RigidBody2D" unique_id=970836918]
+[node name="PlayerBullet" type="RigidBody2D" unique_id=970836918]
 collision_layer = 2
-collision_mask = 5
 gravity_scale = 0.0
-script = ExtResource("1_mkf8s")
+script = ExtResource("1_4g3gs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=742341978]
 shape = SubResource("CircleShape2D_y25gk")
