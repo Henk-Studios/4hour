@@ -1,18 +1,12 @@
 [gd_scene format=3 uid="uid://dw43wp4blps34"]
 
 [ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_paxxb"]
 [ext_resource type="PackedScene" uid="uid://chce21ad316j3" path="res://scenes/enemy.tscn" id="2_gldc4"]
 [ext_resource type="PackedScene" uid="uid://ckrmo50iceg6i" path="res://scenes/bullet.tscn" id="3_gldc4"]
-[ext_resource type="PackedScene" path="res://scenes/block.tscn" id="1_4xfga"]
-[ext_resource type="Script" uid="uid://d2ew58pm8ctrn" path="res://scripts/map.gd" id="1_paxxb"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="2_paxxb"]
+[ext_resource type="PackedScene" uid="uid://d3hoe8ia86688" path="res://scenes/spawner.tscn" id="5_2klcf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gldc4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gldc4"]
-size = Vector2(1.125926, 1.0839686)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_0cso3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4xfga"]
 vertices = PackedVector2Array(3477.0078, 4514.008, -868, 4520.9766, -868, 73.97656, 3484.9766, 66.00781)
@@ -133,4 +127,11 @@ navigation_polygon = SubResource("NavigationPolygon_4xfga")
 
 [node name="Bullet" parent="." unique_id=2102187426 instance=ExtResource("3_gldc4")]
 position = Vector2(2508, 386)
+
+[node name="Spawner" parent="." unique_id=1506309729 instance=ExtResource("5_2klcf")]
+position = Vector2(-734, 185)
+
+[node name="Spawner2" parent="." unique_id=526522952 instance=ExtResource("5_2klcf")]
+position = Vector2(3322, 214)
+
 [connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
