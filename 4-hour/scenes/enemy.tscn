@@ -25,5 +25,3 @@ modulate = Color(1, 0, 0, 1)
 position = Vector2(0.0021066663, 0.0030295847)
 scale = Vector2(1.0062503, 0.99375004)
 texture = SubResource("CanvasTexture_0cso3")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=985126326]
