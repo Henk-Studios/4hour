@@ -1,9 +1,9 @@
 extends RigidBody2D
 class_name BulletBase
 
-@export var speed: float = 400.0
+@export var speed: float = 1200.0
 @export var direction: Vector2 = Vector2.RIGHT
-@export var range: float = 800.0
+@export var range: float = 80000.0
 
 var start_position: Vector2
 
