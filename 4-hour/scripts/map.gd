@@ -6,6 +6,12 @@ const PLAYER_SCENE = preload("res://scenes/player.tscn")
 
 var camera_targets: Array[Dictionary] = []
 
+var active_player_stats: Array[Dictionary] = []
+var start_time: float = 0.0
+var elapsed_time: float = 0.0
+var game_over: bool = false
+var game_over_ui: Control
+
 func setup(params: Dictionary) -> void:
 	print("Map scene setup with params: ", params)
 	
@@ -59,9 +65,21 @@ func setup(params: Dictionary) -> void:
 			player.camera = cam
 			camera_targets.append({"camera": cam, "target": player})
 			
+			active_player_stats.append({
+				"player": player,
+				"player_index": player.player_index,
+				"time_survived": 0.0,
+				"dead": false,
+				"color": player.COLORS[player.player_index % player.COLORS.size()]
+			})
+			
 	Manager.scene.finish_loading()
 
 func _process(delta: float) -> void:
+	if not game_over:
+		elapsed_time += delta
+		_check_players_alive()
+
 	for item in camera_targets:
 		if is_instance_valid(item.target) and is_instance_valid(item.camera):
 			var prev_position = item.camera.position
@@ -72,6 +90,46 @@ func _process(delta: float) -> void:
 			var zoom_factor = inverse_lerp(0.0, 1000, movement_speed)
 			var target_zoom = lerp(1.0, 0.5, zoom_factor)
 			item.camera.zoom = item.camera.zoom.lerp(Vector2.ONE * target_zoom, 5.0 * delta)
+
+func _check_players_alive() -> void:
+	var alive_count = 0
+	
+	for stat in active_player_stats:
+		if not stat["dead"]:
+			if is_instance_valid(stat["player"]):
+				alive_count += 1
+				stat["time_survived"] = elapsed_time
+			else:
+				stat["dead"] = true
+
+	if alive_count == 0 and active_player_stats.size() > 0:
+		_show_game_over()
+
+func _show_game_over() -> void:
+		game_over = true
+
+		$UI/GameOverPanel.show()
+
+		# Sort players by survival time descending
+		active_player_stats.sort_custom(func(a, b): return a["time_survived"] > b["time_survived"])
+
+		var title = $UI/GameOverPanel/VBoxContainer/TitleLabel
+		if active_player_stats.size() > 0:
+				title.text = "Player %d won!" % (active_player_stats[0]["player_index"] + 1)
+				title.modulate = active_player_stats[0]["color"]
+
+		var player_list = $UI/GameOverPanel/VBoxContainer/PlayerList
+		for child in player_list.get_children():
+				child.queue_free()
+
+		for i in range(active_player_stats.size()):
+				var stat = active_player_stats[i]
+				var l = Label.new()
+				var p_name = "Player " + str(stat["player_index"] + 1)
+				var t = "%.1f seconds" % stat["time_survived"]
+				l.text = "%d. %s - Survived %s" % [(i + 1), p_name, t]
+				l.modulate = stat["color"]
+				player_list.add_child(l)
 
 func _on_back_button_pressed() -> void:
 	Manager.scene.change_scene("res://scenes/main_menu.tscn")

@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name BulletBase
 
 @export var speed: float = 2000.0
+@export var damage: float = 20.0
 @export var direction: Vector2 = Vector2.RIGHT
 @export var range: float = 80000.0
 
@@ -25,10 +26,14 @@ func _integrate_forces(state):
 
 		# Check if collider is a Player
 		if collider is Player:
-			hit_player.emit(collider)
+			if self is EnemyBullet:
+				collider.take_damage(damage)
+			queue_free()
 		# Check if collider is an Enemy
 		elif collider is Enemy:
-			hit_enemy.emit(collider)
+			if self is PlayerBullet:
+				collider.take_damage(damage)
+			queue_free()
 		# Otherwise it's a wall - destroy the bullet
 		else:
 			queue_free()

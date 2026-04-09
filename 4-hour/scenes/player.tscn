@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
 radius = 50.08992
 
-[node name="Player" type="CharacterBody2D" unique_id=1254713233 node_paths=PackedStringArray("polygon", "collision_shape")]
+[node name="Player" type="CharacterBody2D" unique_id=1254713233 node_paths=PackedStringArray("polygon", "collision_shape") groups=["players"]]
 collision_layer = 4
 script = ExtResource("1_3vyb7")
 polygon = NodePath("Polygon2D")
