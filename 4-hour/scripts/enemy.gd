@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Enemy
 
 # --- Movement ---
 @export var speed: float = 200.0
