@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://be3lbu0l40qvq"]
 
 [ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
-[ext_resource type="Script" uid="uid://rj2iu8kkawq" path="res://scripts/enemy.gd" id="2_paxxb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gldc4"]
-size = Vector2(1.125926, 1.0839686)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_0cso3"]
+[ext_resource type="PackedScene" uid="uid://chce21ad316j3" path="res://scenes/enemy.tscn" id="2_gldc4"]
+[ext_resource type="PackedScene" uid="uid://ckrmo50iceg6i" path="res://scenes/bullet.tscn" id="3_gldc4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4xfga"]
 vertices = PackedVector2Array(3477.0078, 4514.008, -868, 4520.9766, -868, 73.97656, 3484.9766, 66.00781)
@@ -81,25 +77,12 @@ scale = Vector2(4654, 55.500008)
 position = Vector2(1335, 4602)
 scale = Vector2(4654, 55.500008)
 
-[node name="Enemy" type="RigidBody2D" parent="." unique_id=746509554]
+[node name="Enemy" parent="." unique_id=403151553 instance=ExtResource("2_gldc4")]
 position = Vector2(2825, 383)
-gravity_scale = 0.0
-script = ExtResource("2_paxxb")
-target_position = Vector2(500, 12000)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=732251782]
-position = Vector2(0.04074073, 0.0038166046)
-scale = Vector2(40, 40)
-shape = SubResource("RectangleShape2D_gldc4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy/CollisionShape2D" unique_id=1016332683]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(0.0021066663, 0.0030295847)
-scale = Vector2(1.0062503, 0.99375004)
-texture = SubResource("CanvasTexture_0cso3")
-
-[node name="Camera2D" type="Camera2D" parent="Enemy" unique_id=1544559725]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1866340769]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_4xfga")
+
+[node name="Bullet" parent="." unique_id=2102187426 instance=ExtResource("3_gldc4")]
+position = Vector2(2508, 386)

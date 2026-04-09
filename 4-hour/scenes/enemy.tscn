@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://chce21ad316j3"]
+
+[ext_resource type="Script" uid="uid://rj2iu8kkawq" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://ckrmo50iceg6i" path="res://scenes/bullet.tscn" id="2_md0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gldc4"]
+size = Vector2(1.125926, 1.0839686)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0cso3"]
+
+[node name="Enemy" type="RigidBody2D" unique_id=403151553]
+collision_layer = 8
+gravity_scale = 0.0
+script = ExtResource("1_7p1mj")
+target_position = Vector2(500, 12000)
+bullet_scene = ExtResource("2_md0e3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1706670355]
+position = Vector2(0.04074073, 0.0038166046)
+scale = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_gldc4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=822816239]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0.0021066663, 0.0030295847)
+scale = Vector2(1.0062503, 0.99375004)
+texture = SubResource("CanvasTexture_0cso3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=985126326]
