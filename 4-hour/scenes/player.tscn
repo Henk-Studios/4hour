@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://baqbykt0p3fos"]
+
+[ext_resource type="Script" uid="uid://dh4ojuawod8qs" path="res://scripts/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
+radius = 50.08992
+
+[node name="Player" type="CharacterBody2D" unique_id=1254713233 node_paths=PackedStringArray("polygon", "collision_shape")]
+script = ExtResource("1_3vyb7")
+polygon = NodePath("Polygon2D")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=247574762]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1237270709]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=632891345]
+position = Vector2(-130.00002, -83.000015)
+scale = Vector2(0.385, 0.385)
+polygon = PackedVector2Array(200, 100, 467, 99, 469, 174, 614, 159, 614, 297, 472, 271, 469, 342, 202, 340)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1412597429]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_u8vuu")

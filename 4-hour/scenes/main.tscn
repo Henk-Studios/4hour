@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://da2oeivl2feji"]
+
+[ext_resource type="Script" uid="uid://bqynyluoab78f" path="res://scripts/audio_manager.gd" id="2_tbgi4"]
+[ext_resource type="Script" uid="uid://dfyaiwaspt0q6" path="res://scripts/scene_manager.gd" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://yoerpy72ihtw" path="res://scenes/splash_screen.tscn" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://c610ix66j6phe" path="res://scripts/utility_manager.gd" id="5_tipki"]
+
+[node name="Main" type="Node" unique_id=1713422598]
+
+[node name="AudioManager" type="Node" parent="." unique_id=226488227]
+script = ExtResource("2_tbgi4")
+
+[node name="SceneManager" type="Node" parent="." unique_id=857487734]
+script = ExtResource("3_tefeu")
+main_scene_path = "res://scenes/main_menu.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SceneManager" unique_id=847979113]
+
+[node name="SplashScreen" parent="SceneManager/CanvasLayer" unique_id=154544770 instance=ExtResource("4_o6xl0")]
+
+[node name="UtilityManager" type="Node" parent="." unique_id=211263786]
+script = ExtResource("5_tipki")
