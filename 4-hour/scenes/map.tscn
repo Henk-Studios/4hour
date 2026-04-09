@@ -2,6 +2,18 @@
 
 [ext_resource type="PackedScene" path="res://scenes/block.tscn" id="1_4xfga"]
 [ext_resource type="Script" uid="uid://d2ew58pm8ctrn" path="res://scripts/map.gd" id="1_paxxb"]
+[ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
+[ext_resource type="Script" uid="uid://rj2iu8kkawq" path="res://scripts/enemy.gd" id="2_paxxb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gldc4"]
+size = Vector2(1.125926, 1.0839686)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0cso3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4xfga"]
+vertices = PackedVector2Array(3477.0078, 4514.008, -868, 4520.9766, -868, 73.97656, 3484.9766, 66.00781)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-878, 64, 3495, 56, 3487, 4524, -878, 4531)])
 
 [node name="Map" type="Node2D" unique_id=1916790604 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_paxxb")
@@ -23,7 +35,7 @@ position = Vector2(3635.0002, 2297)
 rotation = 1.5707964
 
 [node name="Block5" parent="." unique_id=247758933 instance=ExtResource("1_4xfga")]
-position = Vector2(1364.2499, 1956.6875)
+position = Vector2(1346, 1963.9999)
 scale = Vector2(478.49982, 47.374935)
 
 [node name="Block6" parent="." unique_id=671778727 instance=ExtResource("1_4xfga")]
@@ -77,3 +89,48 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 
 [connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
+[node name="Block11" parent="." unique_id=1101131667 instance=ExtResource("1_4xfga")]
+position = Vector2(2737.0002, 474)
+scale = Vector2(478.49982, 47.374935)
+
+[node name="Block12" parent="." unique_id=1908580786 instance=ExtResource("1_4xfga")]
+position = Vector2(2955.0002, 691.00006)
+rotation = 1.5621527
+scale = Vector2(478.49982, 47.374935)
+
+[node name="Block13" parent="." unique_id=1815447883 instance=ExtResource("1_4xfga")]
+position = Vector2(-972.99976, 2281)
+rotation = 1.5707964
+scale = Vector2(4654, 55.500008)
+
+[node name="Block14" parent="." unique_id=654831224 instance=ExtResource("1_4xfga")]
+position = Vector2(3602.9993, 2304.9998)
+rotation = 1.5707964
+scale = Vector2(4654, 55.500008)
+
+[node name="Block15" parent="." unique_id=514218703 instance=ExtResource("1_4xfga")]
+position = Vector2(1335, 4602)
+scale = Vector2(4654, 55.500008)
+
+[node name="Enemy" type="RigidBody2D" parent="." unique_id=746509554]
+position = Vector2(2825, 383)
+gravity_scale = 0.0
+script = ExtResource("2_paxxb")
+target_position = Vector2(500, 12000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=732251782]
+position = Vector2(0.04074073, 0.0038166046)
+scale = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_gldc4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy/CollisionShape2D" unique_id=1016332683]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0.0021066663, 0.0030295847)
+scale = Vector2(1.0062503, 0.99375004)
+texture = SubResource("CanvasTexture_0cso3")
+
+[node name="Camera2D" type="Camera2D" parent="Enemy" unique_id=1544559725]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1866340769]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_4xfga")

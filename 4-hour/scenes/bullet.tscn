@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ckrmo50iceg6i"]
+
+[ext_resource type="Script" uid="uid://ce5ua8iyksdhc" path="res://scenes/bullet.gd" id="1_mkf8s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+radius = 16.0
+
+[node name="Bullet" type="Node2D" unique_id=2102187426]
+script = ExtResource("1_mkf8s")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1320785109]
+position = Vector2(-13, -13)
+polygon = PackedVector2Array(-3.6336975, 17.834938, -3.0168152, 3.3385124, 6.2362213, -1.9048767, 20.115768, -2.8301811, 27.826645, 2.1047745, 29.677246, 11.974682, 29.677246, 19.685547, 24.433853, 24.312065, 14.872391, 27.087978, 7.4699554, 27.396412, 0.3759613, 24.312065)
+uv = PackedVector2Array(-3.6336975, 17.834938, -3.0168152, 3.3385124, 6.2362213, -1.9048767, 20.115768, -2.8301811, 27.826645, 2.1047745, 29.677246, 11.974682, 29.677246, 19.685547, 24.433853, 24.312065, 14.872391, 27.087978, 7.4699554, 27.396412, 0.3759613, 24.312065)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=970836918]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=742341978]
+shape = SubResource("CircleShape2D_y25gk")
