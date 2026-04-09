@@ -15,15 +15,16 @@ run/main_scene="uid://da2oeivl2feji"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Manager="*uid://dkqc8ldm1peq4"
+
 [layer_names]
 
 2d_physics/layer_1="walls"
 2d_physics/layer_2="bullet"
 2d_physics/layer_3="player"
 2d_physics/layer_4="enemy"
-[autoload]
-
-Manager="*uid://dkqc8ldm1peq4"
 
 [physics]
 
