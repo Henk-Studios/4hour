@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
 [ext_resource type="Script" uid="uid://d2ew58pm8ctrn" path="res://scripts/map.gd" id="1_paxxb"]
-[ext_resource type="PackedScene" uid="uid://chce21ad316j3" path="res://scenes/enemy.tscn" id="2_gldc4"]
-[ext_resource type="PackedScene" uid="uid://ckrmo50iceg6i" path="res://scenes/player_bullet.tscn" id="3_gldc4"]
+[ext_resource type="PackedScene" uid="uid://d0hiix1sne0p0" path="res://scenes/bullet.tscn" id="3_gldc4"]
 [ext_resource type="PackedScene" uid="uid://d3hoe8ia86688" path="res://scenes/spawner.tscn" id="5_2klcf"]
+[ext_resource type="Script" uid="uid://cfd0rsp4jkt6b" path="res://scenes/storm.gd" id="5_2lpho"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gldc4"]
 
@@ -12,6 +12,9 @@
 vertices = PackedVector2Array(3477.0078, 4514.008, -868, 4520.9766, -868, 73.97656, 3484.9766, 66.00781)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-878, 64, 3495, 56, 3487, 4524, -878, 4531)])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cso3"]
+radius = 66.96932
 
 [node name="Map" type="Node2D" unique_id=1916790604 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_paxxb")
@@ -1002,6 +1005,22 @@ position = Vector2(12391, 9095)
 
 [node name="Spawner8" parent="." unique_id=1589640544 instance=ExtResource("5_2klcf")]
 position = Vector2(5706, 13387)
+
+[node name="Storm" type="Polygon2D" parent="." unique_id=1080753389]
+modulate = Color(0.36078432, 0.23529412, 1, 0.42352942)
+position = Vector2(6226, 6539.0005)
+scale = Vector2(128.15, 128.15)
+offset = Vector2(100, 0)
+polygon = PackedVector2Array(-113.600006, -55.599995, -66.399994, -60.399994, -46.399994, -49.999996, -23.200012, -11.599998, -23.200012, 15.599998, -33.600006, 48.4, -53.600006, 61.200005, -79.20001, 67.6, -129.6, 65.200005, -147.19998, 55.6, -160.79999, 32.4, -169.6, 6.800003, -168, -19.599998, -159.19998, -41.999996, -142.4, -51.599995)
+uv = PackedVector2Array(-113.600006, -55.599995, -66.399994, -60.399994, -46.399994, -49.999996, -23.200012, -11.599998, -23.200012, 15.599998, -33.600006, 48.4, -53.600006, 61.200005, -79.20001, 67.6, -129.6, 65.200005, -147.19998, 55.6, -160.79999, 32.4, -169.6, 6.800003, -168, -19.599998, -159.19998, -41.999996, -142.4, -51.599995)
+script = ExtResource("5_2lpho")
+
+[node name="Area2D" type="Area2D" parent="Storm" unique_id=1149260734]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Storm/Area2D" unique_id=2141701498]
+position = Vector2(4.288, 3.7359939)
+scale = Vector2(1.025, 1.025)
+shape = SubResource("CircleShape2D_0cso3")
 
 [connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/RestartButton" to="." method="_on_back_button_pressed"]
