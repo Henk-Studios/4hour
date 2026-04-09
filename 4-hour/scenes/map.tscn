@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://be3lbu0l40qvq"]
+[gd_scene format=3 uid="uid://dw43wp4blps34"]
 
-[ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
+[ext_resource type="PackedScene" path="res://scenes/block.tscn" id="1_4xfga"]
+[ext_resource type="Script" uid="uid://d2ew58pm8ctrn" path="res://scripts/map.gd" id="1_paxxb"]
 
-[node name="Map" type="Node2D" unique_id=1916790604]
+[node name="Map" type="Node2D" unique_id=1916790604 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_paxxb")
+grid = NodePath("UI/GridContainer")
 
 [node name="Block" parent="." unique_id=854829560 instance=ExtResource("1_4xfga")]
 position = Vector2(1312, -27.25)
@@ -46,3 +49,31 @@ scale = Vector2(478.49982, 66.09329)
 position = Vector2(2210.441, 2628.4143)
 rotation = -0.9533081
 scale = Vector2(478.49982, 64.93753)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1185141236]
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=767365864]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43529412, 0.78039217, 1, 1)
+
+[node name="BackButton" type="Button" parent="UI" unique_id=391998051]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 60.0
+text = "Main Menu"
+
+[node name="GridContainer" type="GridContainer" parent="UI" unique_id=512030098]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+
+[connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
