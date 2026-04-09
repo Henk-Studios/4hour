@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dw43wp4blps34"]
 
-[ext_resource type="PackedScene" path="res://scenes/block.tscn" id="1_4xfga"]
-[ext_resource type="Script" uid="uid://d2ew58pm8ctrn" path="res://scripts/map.gd" id="1_paxxb"]
-[ext_resource type="PackedScene" uid="uid://cjo0cvah4lbai" path="res://scenes/enemy.tscn" id="2_gldc4"]
-[ext_resource type="PackedScene" uid="uid://c37xi1cmtjx2b" path="res://scenes/player_bullet.tscn" id="3_gldc4"]
+[ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_paxxb"]
+[ext_resource type="PackedScene" uid="uid://chce21ad316j3" path="res://scenes/enemy.tscn" id="2_gldc4"]
+[ext_resource type="PackedScene" uid="uid://ckrmo50iceg6i" path="res://scenes/player_bullet.tscn" id="3_gldc4"]
+[ext_resource type="PackedScene" uid="uid://d3hoe8ia86688" path="res://scenes/spawner.tscn" id="5_2klcf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gldc4"]
 
@@ -126,5 +127,11 @@ navigation_polygon = SubResource("NavigationPolygon_4xfga")
 
 [node name="Bullet" parent="." unique_id=2102187426 instance=ExtResource("3_gldc4")]
 position = Vector2(2508, 386)
+
+[node name="Spawner" parent="." unique_id=1506309729 instance=ExtResource("5_2klcf")]
+position = Vector2(-734, 185)
+
+[node name="Spawner2" parent="." unique_id=526522952 instance=ExtResource("5_2klcf")]
+position = Vector2(3322, 214)
 
 [connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
