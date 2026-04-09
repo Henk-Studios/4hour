@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bqwtw7sm3twww"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3gtdk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r6n6"]
+size = Vector2(291.00006, 51)
+
+[node name="Block" type="Sprite2D" unique_id=854829560]
+position = Vector2(-171.50012, 0)
+scale = Vector2(4712.9995, 55.500008)
+texture = SubResource("CanvasTexture_3gtdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1501866768]
+scale = Vector2(0.99999994, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2020058768]
+position = Vector2(0.0034129936, 0.015151502)
+scale = Vector2(0.003412969, 0.02020202)
+shape = SubResource("RectangleShape2D_8r6n6")

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://be3lbu0l40qvq"]
+
+[ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
+
+[node name="Map" type="Node2D" unique_id=1916790604]
+
+[node name="Block" parent="." unique_id=854829560 instance=ExtResource("1_4xfga")]
+position = Vector2(1312, -27.25)
+scale = Vector2(4654, 55.500008)
+
+[node name="Block2" parent="." unique_id=1647359181 instance=ExtResource("1_4xfga")]
+position = Vector2(-1003, 2296)
+rotation = 1.5707964
+
+[node name="Block3" parent="." unique_id=1276091853 instance=ExtResource("1_4xfga")]
+position = Vector2(1325.4999, 4635)
+
+[node name="Block4" parent="." unique_id=1836355436 instance=ExtResource("1_4xfga")]
+position = Vector2(3635.0002, 2297)
+rotation = 1.5707964
+
+[node name="Block5" parent="." unique_id=247758933 instance=ExtResource("1_4xfga")]
+position = Vector2(1364.2499, 1956.6875)
+scale = Vector2(478.49982, 47.374935)
+
+[node name="Block6" parent="." unique_id=671778727 instance=ExtResource("1_4xfga")]
+position = Vector2(1379, 2504)
+scale = Vector2(478.49982, 47.374935)
+
+[node name="Block7" parent="." unique_id=723635001 instance=ExtResource("1_4xfga")]
+position = Vector2(1802, 2040.9999)
+rotation = 0.34906584
+scale = Vector2(478.49982, 47.374935)
+
+[node name="Block8" parent="." unique_id=215758049 instance=ExtResource("1_4xfga")]
+position = Vector2(922.99976, 2427.0002)
+rotation = 0.34906584
+scale = Vector2(478.49982, 47.374935)
+
+[node name="Block9" parent="." unique_id=1620714746 instance=ExtResource("1_4xfga")]
+position = Vector2(531.3031, 1825.9115)
+rotation = -0.9533081
+scale = Vector2(478.49982, 66.09329)
+
+[node name="Block10" parent="." unique_id=1582715585 instance=ExtResource("1_4xfga")]
+position = Vector2(2210.441, 2628.4143)
+rotation = -0.9533081
+scale = Vector2(478.49982, 64.93753)
