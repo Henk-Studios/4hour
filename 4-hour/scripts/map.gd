@@ -56,6 +56,7 @@ func setup(params: Dictionary) -> void:
 			cam.position = player.position
 			vp.add_child(cam)
 			
+			player.camera = cam
 			camera_targets.append({"camera": cam, "target": player})
 			
 	Manager.scene.finish_loading()

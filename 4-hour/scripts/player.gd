@@ -8,6 +8,7 @@ class_name Player
 
 var input_type: String = "keyboard"
 var device_id: int = -1
+var camera: Camera2D
 
 var left_action: String
 var right_action: String
@@ -84,7 +85,15 @@ func _physics_process(_delta: float) -> void:
     move_and_slide()
     if input_type == "keyboard":
         # Keyboard player looks at the mouse
-        look_at(get_global_mouse_position())
+        if camera:
+            # Convert screen mouse position to world coordinates using the camera
+            var viewport = camera.get_viewport()
+            var mouse_screen_pos = viewport.get_mouse_position()
+            var world_pos = camera.get_global_position()
+            # Account for camera zoom and viewport size
+            var viewport_size = viewport.get_visible_rect().size
+            world_pos += (mouse_screen_pos - viewport_size / 2.0) / camera.zoom
+            look_at(world_pos)
     else:
         # Controller players look using the right stick
         var aim_vector = Input.get_vector(aim_left_action, aim_right_action, aim_up_action, aim_down_action)
