@@ -11,6 +11,8 @@ var start_time: float = 0.0
 var elapsed_time: float = 0.0
 var game_over: bool = false
 var game_over_ui: Control
+var match_time: float = 10.0
+var pvp_activated: bool = false
 
 func setup(params: Dictionary) -> void:
 	print("Map scene setup with params: ", params)
@@ -73,11 +75,25 @@ func setup(params: Dictionary) -> void:
 				"color": player.COLORS[player.player_index % player.COLORS.size()]
 			})
 			
+	Manager.pvp_enabled = false
 	Manager.scene.finish_loading()
 
 func _process(delta: float) -> void:
 	if not game_over:
 		elapsed_time += delta
+		
+		if not pvp_activated:
+			match_time -= delta
+			var timer_label = $UI/TimerLabel
+			if is_instance_valid(timer_label):
+				if match_time <= 0:
+					match_time = 0
+					_activate_pvp()
+				else:
+					var minutes = int(match_time) / 60
+					var seconds = int(match_time) % 60
+					timer_label.text = "%02d:%02d" % [minutes, seconds]
+					
 		_check_players_alive()
 
 	for item in camera_targets:
@@ -102,8 +118,11 @@ func _check_players_alive() -> void:
 			else:
 				stat["dead"] = true
 
-	if alive_count == 0 and active_player_stats.size() > 0:
-		_show_game_over()
+	if active_player_stats.size() > 0:
+		if pvp_activated and alive_count <= 1:
+			_show_game_over()
+		elif not pvp_activated and alive_count == 0:
+			_show_game_over()
 
 func _show_game_over() -> void:
 		game_over = true
@@ -133,3 +152,17 @@ func _show_game_over() -> void:
 
 func _on_back_button_pressed() -> void:
 	Manager.scene.change_scene("res://scenes/main_menu.tscn")
+
+func _activate_pvp() -> void:
+	Manager.pvp_enabled = true
+	pvp_activated = true
+	var timer_label = $UI/TimerLabel
+	if is_instance_valid(timer_label):
+		timer_label.text = "PVP ENABLED"
+		timer_label.add_theme_color_override("font_color", Color.RED)
+	
+	# Find and remove all enemies and spawners recursively
+	var all_nodes = get_tree().current_scene.find_children("*", "", true, false)
+	for node in all_nodes:
+		if node is Enemy or node is EnemySpawner or node is EnemyBullet:
+			node.queue_free()

@@ -5,6 +5,7 @@ extends Node
 @onready var audio: AudioManager
 @onready var utility: UtilityManager
 @onready var scene: SceneManager
+var pvp_enabled: bool = false
 
 
 func _ready():
@@ -23,3 +24,4 @@ func setup_managers():
 	audio = get_node("/root/Main/AudioManager")
 	utility = get_node("/root/Main/UtilityManager")
 	scene = get_node("/root/Main/SceneManager")
+

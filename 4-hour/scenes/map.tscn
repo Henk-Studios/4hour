@@ -46,6 +46,20 @@ mouse_filter = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 
+[node name="TimerLabel" type="Label" parent="UI" unique_id=82361284]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "03:00"
+
 [node name="GameOverPanel" type="PanelContainer" parent="UI" unique_id=214558426]
 visible = false
 custom_minimum_size = Vector2(400, 300)

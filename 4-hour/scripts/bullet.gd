@@ -26,7 +26,7 @@ func _integrate_forces(state):
 
 		# Check if collider is a Player
 		if collider is Player:
-			if self is EnemyBullet:
+			if self is EnemyBullet or Manager.pvp_enabled:
 				collider.take_damage(damage)
 			queue_free()
 		# Check if collider is an Enemy
@@ -41,3 +41,4 @@ func _integrate_forces(state):
 	# Destroy if exceeded range
 	if start_position.distance_to(global_position) > range:
 		queue_free()
+
