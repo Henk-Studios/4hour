@@ -1,14 +1,62 @@
-[gd_scene format=3 uid="uid://be3lbu0l40qvq"]
+[gd_scene format=3 uid="uid://dw43wp4blps34"]
 
 [ext_resource type="PackedScene" uid="uid://bqwtw7sm3twww" path="res://scenes/block.tscn" id="1_4xfga"]
 [ext_resource type="PackedScene" uid="uid://chce21ad316j3" path="res://scenes/enemy.tscn" id="2_gldc4"]
+[ext_resource type="PackedScene" uid="uid://ckrmo50iceg6i" path="res://scenes/bullet.tscn" id="3_gldc4"]
+[ext_resource type="PackedScene" path="res://scenes/block.tscn" id="1_4xfga"]
+[ext_resource type="Script" uid="uid://d2ew58pm8ctrn" path="res://scripts/map.gd" id="1_paxxb"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="2_paxxb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gldc4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gldc4"]
+size = Vector2(1.125926, 1.0839686)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0cso3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4xfga"]
 vertices = PackedVector2Array(3477.0078, 4514.008, -868, 4520.9766, -868, 73.97656, 3484.9766, 66.00781)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-878, 64, 3495, 56, 3487, 4524, -878, 4531)])
 
-[node name="Map" type="Node2D" unique_id=1916790604]
+[node name="Map" type="Node2D" unique_id=1916790604 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_paxxb")
+grid = NodePath("UI/GridContainer")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1185141236]
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=767365864]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8889334, 0, 0.1758833, 1)
+
+[node name="BackButton" type="Button" parent="UI" unique_id=391998051]
+z_index = 4
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 60.0
+text = "Main Menu"
+
+[node name="GridContainer" type="GridContainer" parent="UI" unique_id=512030098]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=793830508]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1256.5, 2699.5)
+scale = Vector2(12438.999, 13392.999)
+texture = SubResource("CanvasTexture_gldc4")
 
 [node name="Block" parent="." unique_id=854829560 instance=ExtResource("1_4xfga")]
 position = Vector2(1312, -27.25)
@@ -82,3 +130,7 @@ position = Vector2(2825, 383)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1866340769]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_4xfga")
+
+[node name="Bullet" parent="." unique_id=2102187426 instance=ExtResource("3_gldc4")]
+position = Vector2(2508, 386)
+[connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
