@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="4hour"
+run/main_scene="uid://da2oeivl2feji"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Manager="*uid://dkqc8ldm1peq4"
 
 [physics]
 
