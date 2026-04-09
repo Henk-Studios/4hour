@@ -6,8 +6,6 @@
 size = Vector2(291.00006, 51)
 
 [node name="Block" type="Sprite2D" unique_id=854829560]
-position = Vector2(-171.50012, 0)
-scale = Vector2(4712.9995, 55.500008)
 texture = SubResource("CanvasTexture_3gtdk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1501866768]
@@ -17,3 +15,6 @@ scale = Vector2(0.99999994, 1)
 position = Vector2(0.0034129936, 0.015151502)
 scale = Vector2(0.003412969, 0.02020202)
 shape = SubResource("RectangleShape2D_8r6n6")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1210477406]
+vertices = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
