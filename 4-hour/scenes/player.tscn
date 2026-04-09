@@ -10,6 +10,17 @@ script = ExtResource("1_3vyb7")
 polygon = NodePath("Polygon2D")
 collision_shape = NodePath("CollisionShape2D")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=247574762]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1237270709]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=632891345]
 position = Vector2(-130.00002, -83.000015)
 scale = Vector2(0.385, 0.385)

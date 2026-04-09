@@ -44,6 +44,7 @@ func setup(params: Dictionary) -> void:
 			container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			container.size_flags_vertical = Control.SIZE_EXPAND_FILL
 			container.stretch = true
+			container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			grid.add_child(container)
 			
 			var vp := SubViewport.new()
