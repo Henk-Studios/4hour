@@ -17,6 +17,9 @@ var pvp_activated: bool = false
 func setup(params: Dictionary) -> void:
 	print("Map scene setup with params: ", params)
 	
+	if params.has("match_time"):
+		match_time = params["match_time"]
+		
 	if params.has("players"):
 		var num_players = params["players"].size()
 		

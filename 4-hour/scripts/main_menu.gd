@@ -4,6 +4,8 @@ class_name Menu
 @export var play_button: Button
 @export var player_buttons_container: HBoxContainer
 @export var controllers_label: Label
+@export var time_slider: HSlider
+@export var time_label: Label
 
 var player_inputs: Array[int] = [-1, -1, -1, -1]
 # input mappings: -1 = none, 0 = keyboard, 1 = controller 0, 2 = controller 1, 3 = controller 2, 4 = controller 3
@@ -12,6 +14,8 @@ var player_buttons: Array[Button] = []
 
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)
+	time_slider.value_changed.connect(_on_time_slider_value_changed)
+	_on_time_slider_value_changed(time_slider.value)
 	
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	_update_controller_count()
@@ -90,4 +94,12 @@ func _on_play_button_pressed() -> void:
 				"device_id": player_inputs[i] - 1 # -1 for keyboard, 0-3 for controllers
 			})
 			
-	Manager.scene.change_scene("res://scenes/map.tscn", {"players": active_players})
+	Manager.scene.change_scene("res://scenes/map.tscn", {
+		"players": active_players,
+		"match_time": time_slider.value
+	})
+
+func _on_time_slider_value_changed(value: float) -> void:
+	var minutes = int(value) / 60
+	var seconds = int(value) % 60
+	time_label.text = "PvP Time: %d:%02d" % [minutes, seconds]

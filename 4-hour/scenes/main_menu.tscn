@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qpf2ymnr66ml" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 
-[node name="MainMenu" type="Control" unique_id=475911451 node_paths=PackedStringArray("play_button", "player_buttons_container", "controllers_label")]
+[node name="MainMenu" type="Control" unique_id=475911451 node_paths=PackedStringArray("play_button", "player_buttons_container", "controllers_label", "time_slider", "time_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ script = ExtResource("1_l6cm7")
 play_button = NodePath("PlayButton")
 player_buttons_container = NodePath("PlayerButtons")
 controllers_label = NodePath("ControllersLabel")
+time_slider = NodePath("TimeContainer/TimeSlider")
+time_label = NodePath("TimeContainer/TimeLabel")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=762089415]
 layout_mode = 1
@@ -95,4 +97,30 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 text = "Connected controllers: 0"
+
+[node name="TimeContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="TimeContainer"]
+layout_mode = 2
+text = "PvP Time: 3:00"
+horizontal_alignment = 1
+
+[node name="TimeSlider" type="HSlider" parent="TimeContainer"]
+layout_mode = 2
+min_value = 30.0
+max_value = 600.0
+step = 10.0
+value = 180.0
 
