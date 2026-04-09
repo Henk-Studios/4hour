@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjo0cvah4lbai"]
 
-[ext_resource type="Script" uid="uid://rj2iu8kkawq" path="res://scripts/enemy.gd" id="1_7p1mj"]
-[ext_resource type="PackedScene" uid="uid://c37xi1cmtjx2b" path="res://scenes/enemy_bullet.tscn" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://dfv3j3or6ofjy" path="res://scripts/enemy (2).gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://wuh2nqr8fufa" path="res://scenes/enemy_bullet.tscn" id="2_md0e3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_md0e3"]
 friction = 0.03
@@ -17,7 +17,7 @@ collision_layer = 8
 collision_mask = 9
 physics_material_override = SubResource("PhysicsMaterial_md0e3")
 gravity_scale = 0.0
-script = ExtResource("1_md0e3")
+script = ExtResource("1_7p1mj")
 bullet_scene = ExtResource("2_md0e3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1706670355]

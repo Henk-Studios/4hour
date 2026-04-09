@@ -1,5 +1,7 @@
 extends RigidBody2D
-class_name Enemy
+# class_name Enemy
+
+# DEPRECATED - use enemy 2
 
 # --- Movement ---
 @export var speed: float = 200.0
@@ -10,15 +12,15 @@ var target_position: Vector2 = Vector2.ZERO
 
 # --- Gunner variables ---
 @export var is_gunner: bool = false
-@export var shoot_interval: float = 1.0       # Seconds between shots
+@export var shoot_interval: float = 1.0 # Seconds between shots
 @export var bullet_speed: float = 400.0
-@export var bullet_scene: PackedScene         # Assign your BulletBase scene here
+@export var bullet_scene: PackedScene # Assign your BulletBase scene here
 
 # --- Unstuck variables ---
-@export var stuck_threshold: float = 0.05   # Minimum movement to consider “moving”
-@export var stuck_check_time: float = 0.3  # Seconds to check for stuck
+@export var stuck_threshold: float = 0.05 # Minimum movement to consider “moving”
+@export var stuck_check_time: float = 0.3 # Seconds to check for stuck
 @export var unstuck_force: float = 300.0
-@export var unstuck_duration: float = 0.2  # How long to move in random direction
+@export var unstuck_duration: float = 0.2 # How long to move in random direction
 
 var shoot_timer: Timer
 var last_position: Vector2
