@@ -59,9 +59,9 @@ offset_right = 100.0
 offset_bottom = 80.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
+text = "03:00"
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "03:00"
 
 [node name="GameOverPanel" type="PanelContainer" parent="UI" unique_id=214558426]
 visible = false

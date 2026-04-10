@@ -41,4 +41,3 @@ func _integrate_forces(state):
 	# Destroy if exceeded range
 	if start_position.distance_to(global_position) > range:
 		queue_free()
-

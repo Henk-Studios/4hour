@@ -4,11 +4,11 @@ class_name EnemySpawner
 @export var enemy_scene: PackedScene
 
 # --- Spawn tuning ---
-@export var start_spawn_interval: float = 20.0
-@export var end_spawn_interval: float = 6
+@export var start_spawn_interval: float = 14.0
+@export var end_spawn_interval: float = 5
 @export var ramp_duration: float = 180.0  # 3 minutes
 
-@export var start_spawn_count: int = 1
+@export var start_spawn_count: int = 2
 @export var initial_spawn_delay: float = 1.0
 
 @export var max_enemies: int = 10000

@@ -24,4 +24,3 @@ func setup_managers():
 	audio = get_node("/root/Main/AudioManager")
 	utility = get_node("/root/Main/UtilityManager")
 	scene = get_node("/root/Main/SceneManager")
-
